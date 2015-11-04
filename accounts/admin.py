@@ -1,9 +1,13 @@
 # encoding: utf-8
 
 from django.contrib import admin
+from django.conf.locale.en import formats as en_formats
+
 from reversion.admin import VersionAdmin
 
 from .models import Movement
+
+en_formats.DATE_FORMAT = "Y-m-d"
 
 
 class MovementAdmin(VersionAdmin):

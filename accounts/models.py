@@ -11,6 +11,9 @@ class Movement(models.Model):
 
     comment = models.TextField(null=True, blank=True)
 
+    added_on = models.DateTimeField(auto_add_now=True)
+    last_modified = models.DateTimeField(auto_add=True)
+
     class Meta:
         ordering = ["-date"]
 

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 from django.contrib import admin
 from reversion.admin import VersionAdmin
 
@@ -11,6 +13,20 @@ class MovementAdmin(VersionAdmin):
         }),
     )
 
-    list_display = ("date", "title", "amount", "kind")
+    list_display = ("date", "title", "credit_column", "debit_column")
+
+    def debit_column(self, obj):
+        if obj.kind == "debit":
+            return obj.amount
+        return ""
+
+    debit_column.short_description = "Débit"
+
+    def credit_column(self, obj):
+        if obj.kind == "credit":
+            return obj.amount
+        return ""
+
+    credit_column.short_description = "Crédit"
 
 admin.site.register(Movement, MovementAdmin)

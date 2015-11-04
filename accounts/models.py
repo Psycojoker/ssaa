@@ -13,3 +13,6 @@ class Movement(models.Model):
 
     class Meta:
         ordering = ["-date"]
+
+    def __unicode__(self):
+        return "[%s] %s %s%s" % (self.date.strftime("%F"), self.title, "+" if self.kind == "credit" else "-", self.amount)

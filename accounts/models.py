@@ -12,7 +12,7 @@ class Movement(models.Model):
     comment = models.TextField(null=True, blank=True)
 
     added_on = models.DateTimeField(auto_add_now=True)
-    last_modified = models.DateTimeField(auto_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["-date"]

@@ -17,7 +17,7 @@ class MovementAdmin(VersionAdmin):
         }),
     )
 
-    list_display = ("date", "title", "credit_column", "debit_column")
+    list_display = ("date", "title_column", "credit_column", "debit_column")
 
     def debit_column(self, obj):
         if obj.kind == "debit":
@@ -32,5 +32,13 @@ class MovementAdmin(VersionAdmin):
         return ""
 
     credit_column.short_description = "Crédit"
+
+    def title_column(self, obj):
+        if obj.comment:
+            return "%s [has comment]" % obj.title
+        return obj.title
+
+    title_column.short_description = "Title"
+
 
 admin.site.register(Movement, MovementAdmin)

@@ -10,3 +10,6 @@ class Movement(models.Model):
     kind = models.CharField(choices=(('credit', 'Crédit'), ('debit', 'Débit')), max_length=6)
 
     comment = models.TextField(null=True, blank=True)
+
+    class Meta:
+        ordering = ["-date"]
